@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="english">
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>Sara's Pilates Studio — London Pilates & Fitness Studio</title>
+<script src='https://cdn.tailwindcss.com'></script>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        heading: ['"Playfair Display"', 'serif'],
+        body: ['Inter', 'sans-serif']
+      },
+      colors: {
+        primary: '#6B7A6E',
+        secondary: '#C9B8A8',
+        accent: '#2C2C2C',
+        'accent-dark': '#1a1a1a',
+        'bg-light': '#E8E1D9'
+      }
+    }
+  }
+}
+</script>
+<style>
+@keyframes kenBurns{0%{transform:scale(1.08) translate(0,0)}50%{transform:scale(1.14) translate(-1%,-.5%)}100%{transform:scale(1.08) translate(0,0)}}
+.hero-bg{animation:kenBurns 18s ease-in-out infinite}
+@keyframes imgZoom{0%{transform:scale(1.08)}100%{transform:scale(1)}}
+.img-zoom{animation:imgZoom 10s ease-in-out infinite alternate}
+.fade-up{transform:translateY(28px);transition:transform .7s ease}
+.fade-up.visible{transform:translateY(0)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.float{animation:float 4s ease-in-out infinite}
+@keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(var(--pulse-color,.5),.4)}70%{box-shadow:0 0 0 14px rgba(var(--pulse-color),0)}100%{box-shadow:0 0 0 0 rgba(var(--pulse-color),0)}}
+.pulse-btn{animation:pulseRing 2.5s ease-out infinite}
+html{scroll-behavior:smooth}
+</style>
+</head>
+<body class='bg-white text-primary font-body'>
+<!-- ================== LAPS BRICK PAYMENT BANNER ================== -->
+<style>
+.laps-brick-banner-wrapper{position:sticky;top:0;z-index:99999;width:100%;background-color:#07070f;border-bottom:2px solid #00F0FF;padding:.85rem 1.2rem;box-shadow:0 10px 30px rgba(0,240,255,.15),0 4px 6px rgba(0,0,0,.3);display:flex;flex-direction:column;justify-content:space-between;align-items:center;gap:1.2rem;box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif}
+@media(min-width:768px){.laps-brick-banner-wrapper{flex-direction:row}}
+@keyframes laps-glow-pulse{0%,100%{opacity:1;text-shadow:0 0 10px rgba(250,204,21,.8)}50%{opacity:.7;text-shadow:none}}
+@keyframes laps-gshift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.laps-brick-logo-link{display:flex;align-items:center;gap:8px;text-decoration:none;transition:transform .2s}
+.laps-brick-logo-link:hover{transform:translateY(-1px) scale(1.02)}
+.laps-brick-logo-text{font-size:15px;font-weight:800;color:#fff;letter-spacing:.04em;text-transform:uppercase}
+.laps-brick-logo-text span{color:#00F0FF}
+.laps-brick-btn{background:linear-gradient(135deg,#00F0FF,#8B5CF6,#00F0FF);background-size:200% 200%;animation:laps-gshift 4s ease infinite;color:#000;font-weight:800;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:.6rem 1.4rem;border-radius:6px;white-space:nowrap;transition:transform .25s,box-shadow .25s;border:none;cursor:pointer;box-shadow:0 4px 15px rgba(0,240,255,.2)}
+.laps-brick-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,240,255,.4)}
+#lb-countdown{color:#00F0FF;font-size:1em}
+</style>
+<div class="laps-brick-banner-wrapper" id="laps-brick-payment-banner">
+  <div style="display:flex;align-items:center;gap:.85rem;flex-wrap:wrap">
+    <div style="background:rgba(250,204,21,.15);border:1px solid rgba(250,204,21,.4);padding:4px 10px;border-radius:5px;display:inline-flex;align-items:center">
+      <span style="color:#FACC15;font-weight:800;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;animation:laps-glow-pulse 2s ease-in-out infinite">⚠️ PREVIEW VERSION</span>
+    </div>
+    <span style="color:rgba(255,255,255,.85);font-size:.85rem;line-height:1.4">Your trial ends in <strong id='lb-countdown'></strong>. Complete payment to keep your site active.</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:1.5rem;flex-shrink:0">
+    <a href="https://lapsbrick.com/" target="_blank" rel="noopener" class="laps-brick-logo-link">
+      <svg width="24" height="24" viewBox="0 0 34 34" fill="none"><rect x="2" y="2" width="14" height="9" rx="2.2" fill="#00F0FF" opacity=".92"/><rect x="18" y="2" width="14" height="9" rx="2.2" fill="#8B5CF6" opacity=".92"/><rect x="8" y="13" width="18" height="9" rx="2.2" fill="#00F0FF" opacity=".76"/><rect x="2" y="24" width="14" height="8" rx="2.2" fill="#EA580C" opacity=".88"/><rect x="18" y="24" width="14" height="8" rx="2.2" fill="#00F0FF" opacity=".66"/></svg>
+      <span class="laps-brick-logo-text">LAPS <span>BRICK</span></span>
+    </a>
+    <a href="https://www.lapsbrick.com/products.html" target="_blank" rel="noopener" class="laps-brick-btn">PAY NOW</a>
+  </div>
+</div>
+<style>:root{--lb-banner-h:0px}.header,nav,.navbar{top:var(--lb-banner-h,0px)!important;margin-top:0!important}</style>
+<script>
+(function(){
+  var END = new Date("2026-05-04T19:15:12.332Z");
+  function updateCountdown(){
+    var now = new Date();
+    var diff = END - now;
+    var el = document.getElementById("lb-countdown");
+    if(!el) return;
+    if(diff <= 0){ el.textContent = "0 gün"; return; }
+    var days = Math.floor(diff / 86400000);
+    var hours = Math.floor((diff % 86400000) / 3600000);
+    var mins = Math.floor((diff % 3600000) / 60000);
+    var secs = Math.floor((diff % 60000) / 1000);
+    el.textContent = days + "g " + hours + "s " + mins + "d " + secs + "sn";
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+  function updateOffset(){
+    var b = document.getElementById("laps-brick-payment-banner");
+    if(b){
+      var h = b.offsetHeight;
+      document.documentElement.style.setProperty("--lb-banner-h", h+"px");
+      document.querySelectorAll("header,.header,nav,.navbar").forEach(function(el){
+        var s = window.getComputedStyle(el);
+        if(s.position==="fixed"||s.position==="absolute"||s.position==="sticky") el.style.top=h+"px";
+      });
+    }
+  }
+  window.addEventListener("resize",updateOffset);
+  window.addEventListener("DOMContentLoaded",updateOffset);
+  setTimeout(updateOffset,100);
+  updateOffset();
+})();
+</script>
+<!-- =============================================================== -->
+
+
+<svg style='display:none' aria-hidden='true'><defs><symbol id='logo-symbol' viewBox='0 0 48 48'>
+  <circle cx='24' cy='24' r='22' fill='none' stroke='currentColor' stroke-width='1.5' class='text-primary'/>
+  <circle cx='24' cy='24' r='14' fill='none' stroke='currentColor' stroke-width='1.5' class='text-accent'/>
+  <path d='M24 10 Q32 24 24 38 Q16 24 24 10 Z' fill='currentColor' class='text-primary' opacity='0.85'/>
+  <circle cx='24' cy='24' r='2.5' fill='currentColor' class='text-accent'/>
+</symbol></defs></svg>
+
+<nav class='fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/80 border-b border-gray-100 shadow-sm'>
+  <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <div class='flex items-center justify-between h-20'>
+      <a href='#hero' class='flex items-center gap-3'>
+        <svg class='h-20 w-auto flex-shrink-0'><use href='#logo-symbol'/></svg>
+        <div class='flex flex-col leading-tight'>
+          <span class='font-display text-xl tracking-wide text-primary'>Sara's Pilates Studio</span>
+          <span class='text-xs tracking-widest uppercase text-secondary/70'>Strength · Balance · Breath</span>
+        </div>
+      </a>
+      <div class='hidden md:flex items-center gap-8'>
+        <a href='#hero' class='text-sm font-medium text-gray-700 hover:text-primary transition-colors'>Home</a>
+        <a href='#hizmetler' class='text-sm font-medium text-gray-700 hover:text-primary transition-colors'>Services</a>
+        <a href='#hakkimizda' class='text-sm font-medium text-gray-700 hover:text-primary transition-colors'>About</a>
+        <a href='#iletisim' class='text-sm font-medium text-gray-700 hover:text-primary transition-colors'>Contact</a>
+        <a href='https://wa.me/447700900123' class='bg-primary text-white px-5 py-2.5 rounded-xl font-semibold hover:opacity-90 transition-all'>Book Your First Class</a>
+      </div>
+      <button id='hamburger' class='md:hidden text-primary text-2xl'><i class='fa fa-bars'></i></button>
+    </div>
+    <div id='mobile-menu' class='hidden md:hidden pb-6 space-y-3'>
+      <a href='#hero' class='block text-gray-700 font-medium'>Home</a>
+      <a href='#hizmetler' class='block text-gray-700 font-medium'>Services</a>
+      <a href='#hakkimizda' class='block text-gray-700 font-medium'>About</a>
+      <a href='#iletisim' class='block text-gray-700 font-medium'>Contact</a>
+      <a href='https://wa.me/447700900123' class='block bg-primary text-white px-5 py-3 rounded-xl font-semibold text-center'>Book Your First Class</a>
+    </div>
+  </div>
+</nav>
+
+<section id='hero' class='relative overflow-hidden'>
+  <div id='hero-slides' class='flex transition-transform duration-700 ease-in-out'>
+    <div class='hero-slide relative min-h-screen flex items-center w-full flex-shrink-0'>
+      <img src='https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1600&q=80' alt='Pilates reformer' class='absolute inset-0 w-full h-full object-cover'/>
+      <div class='absolute inset-0 bg-black/55'></div>
+      <div class='relative z-10 text-white text-center max-w-4xl mx-auto px-4'>
+        <p class='text-sm font-medium tracking-widest uppercase mb-6 fade-up'>Boutique Pilates · Central London</p>
+        <h1 class='text-5xl md:text-7xl font-black tracking-tight leading-tight fade-up'>Move with intention.<br/>Breathe with purpose.</h1>
+        <p class='text-lg text-gray-100 leading-relaxed mt-6 max-w-2xl mx-auto fade-up'>Small-group and private Pilates sessions that restore posture, build core strength, and calm the mind.</p>
+        <div class='mt-10 flex flex-wrap gap-4 justify-center fade-up'>
+          <a href='#iletisim' class='bg-primary px-8 py-4 rounded-2xl font-bold hover:opacity-90 transition-all hover:scale-105 text-white'>Book Your First Class</a>
+          <a href='#hizmetler' class='border-2 border-white/70 px-8 py-4 rounded-2xl font-bold hover:bg-white/10 transition-all'>Explore Classes</a>
+        </div>
+      </div>
+    </div>
+    <div class='hero-slide relative min-h-screen flex items-center w-full flex-shrink-0'>
+      <img src='https://images.unsplash.com/photo-1552693673-1bf958298935?w=1600&q=80' alt='Pilates studio' class='absolute inset-0 w-full h-full object-cover'/>
+      <div class='absolute inset-0 bg-black/55'></div>
+      <div class='relative z-10 text-white text-center max-w-4xl mx-auto px-4'>
+        <p class='text-sm font-medium tracking-widest uppercase mb-6 fade-up'>Trusted by 500+ Londoners</p>
+        <h1 class='text-5xl md:text-7xl font-black tracking-tight leading-tight fade-up'>Your body remembers.<br/>Let's remind it.</h1>
+        <p class='text-lg text-gray-100 leading-relaxed mt-6 max-w-2xl mx-auto fade-up'>Classical technique meets modern body-conditioning — led by Sara herself, with real, lasting results.</p>
+        <div class='mt-10 flex flex-wrap gap-4 justify-center fade-up'>
+          <a href='#hakkimizda' class='bg-primary px-8 py-4 rounded-2xl font-bold hover:opacity-90 transition-all hover:scale-105 text-white'>Meet Sara</a>
+          <a href='#iletisim' class='border-2 border-white/70 px-8 py-4 rounded-2xl font-bold hover:bg-white/10 transition-all'>Book a Session</a>
+        </div>
+      </div>
+    </div>
+    <div class='hero-slide relative min-h-screen flex items-center w-full flex-shrink-0'>
+      <img src='https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1600&q=80' alt='Pilates mat' class='absolute inset-0 w-full h-full object-cover'/>
+      <div class='absolute inset-0 bg-black/55'></div>
+      <div class='relative z-10 text-white text-center max-w-4xl mx-auto px-4'>
+        <p class='text-sm font-medium tracking-widest uppercase mb-6 fade-up'>New Client Offer</p>
+        <h1 class='text-5xl md:text-7xl font-black tracking-tight leading-tight fade-up'>Your first class<br/>is on us.</h1>
+        <p class='text-lg text-gray-100 leading-relaxed mt-6 max-w-2xl mx-auto fade-up'>Step into the studio with an intro session — no pressure, just breath, balance, and a warm welcome.</p>
+        <div class='mt-10 flex flex-wrap gap-4 justify-center fade-up'>
+          <a href='#iletisim' class='bg-primary px-8 py-4 rounded-2xl font-bold hover:opacity-90 transition-all hover:scale-105 text-white'>Claim Free Class</a>
+          <a href='tel:+447700900123' class='border-2 border-white/70 px-8 py-4 rounded-2xl font-bold hover:bg-white/10 transition-all'>Call the Studio</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button id='hero-prev' class='absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white w-12 h-12 rounded-full flex items-center justify-center transition-all'><i class='fa fa-chevron-left'></i></button>
+  <button id='hero-next' class='absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white w-12 h-12 rounded-full flex items-center justify-center transition-all'><i class='fa fa-chevron-right'></i></button>
+  <div id='hero-dots' class='absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2'></div>
+</section>
+
+<section id='hizmetler' class='py-24 lg:py-32 bg-white'>
+  <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <div class='text-center max-w-3xl mx-auto mb-16 fade-up'>
+      <p class='text-sm font-medium tracking-widest uppercase text-accent-dark mb-4'>Classes & Services</p>
+      <h2 class='text-3xl md:text-4xl font-bold tracking-tight text-gray-900'>Pilates, thoughtfully designed for every body.</h2>
+      <p class='text-lg text-gray-600 leading-relaxed mt-6'>From first-timers to seasoned practitioners — each session is tailored to build strength, restore balance, and deepen breath.</p>
+    </div>
+    <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+      <div class='bg-white rounded-2xl shadow-lg hover:shadow-2xl p-8 border border-gray-100 transition-all duration-300 hover:scale-105 fade-up'>
+        <i class='fa-solid fa-user fa-2xl mb-4 text-primary'></i>
+        <h3 class='text-xl font-semibold text-gray-900 mt-4'>Private 1:1 Sessions</h3>
+        <p class='text-lg text-gray-600 leading-relaxed mt-3'>One-on-one attention with Sara on the reformer. Bespoke programming for posture, rehab, and performance goals.</p>
+      </div>
+      <div class='bg-white rounded-2xl shadow-lg hover:shadow-2xl p-8 border border-gray-100 transition-all duration-300 hover:scale-105 fade-up'>
+        <i class='fa-solid fa-users fa-2xl mb-4 text-primary'></i>
+        <h3 class='text-xl font-semibold text-gray-900 mt-4'>Small-Group Reformer</h3>
+        <p class='text-lg text-gray-600 leading-relaxed mt-3'>Capped at six people. Focused coaching, precise alignment, and the energy of moving together.</p>
+      </div>
+      <div class='bg-white rounded-2xl shadow-lg hover:shadow-2xl p-8 border border-gray-100 transition-all duration-300 hover:scale-105 fade-up'>
+        <i class='fa-solid fa-spa fa-2xl mb-4 text-primary'></i>
+        <h3 class='text-xl font-semibold text-gray-900 mt-4'>Mat & Mindful Flow</h3>
+        <p class='text-lg text-gray-600 leading-relaxed mt-3'>Classical mat work paired with breath-focused movement. Grounding, strengthening, and restorative.</p>
+      </div>
+      <div class='bg-white rounded-2xl shadow-lg hover:shadow-2xl p-8 border border-gray-100 transition-all duration-300 hover:scale-105 fade-up'>
+        <i class='fa-solid fa-heart-pulse fa-2xl mb-4 text-primary'></i>
+        <h3 class='text-xl font-semibold text-gray-900 mt-4'>Pre & Postnatal Pilates</h3>
+        <p class='text-lg text-gray-600 leading-relaxed mt-3'>Gentle, specialised sessions supporting you through every trimester and into your recovery journey.</p>
+      </div>
+      <div class='bg-white rounded-2xl shadow-lg hover:shadow-2xl p-8 border border-gray-100 transition-all duration-300 hover:scale-105 fade-up'>
+        <i class='fa-solid fa-briefcase fa-2xl mb-4 text-primary'></i>
+        <h3 class='text-xl font-semibold text-gray-900 mt-4'>Desk-Body Recovery</h3>
+        <p class='text-lg text-gray-600 leading-relaxed mt-3'>Targeted programmes for office workers — unwinding tight hips, rounded shoulders, and chronic back pain.</p>
+      </div>
+      <div class='bg-white rounded-2xl shadow-lg hover:shadow-2xl p-8 border border-gray-100 transition-all duration-300 hover:scale-105 fade-up'>
+        <i class='fa-solid fa-calendar-check fa-2xl mb-4 text-primary'></i>
+        <h3 class='text-xl font-semibold text-gray-900 mt-4'>Memberships & Packs</h3>
+        <p class='text-lg text-gray-600 leading-relaxed mt-3'>Flexible class packs and monthly memberships — the more consistent you are, the more your body thanks you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id='hakkimizda' class='py-24 lg:py-32 bg-bg-light'>
+  <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <div class='grid lg:grid-cols-2 gap-16 items-center'>
+      <div class='fade-up'>
+        <img src='https://images.unsplash.com/photo-1540206395-68808572332f?w=1200&q=80' alt='Sara, founder' class='rounded-2xl shadow-2xl w-full object-cover'/>
+      </div>
+      <div class='fade-up'>
+        <p class='text-sm font-medium tracking-widest uppercase text-accent-dark mb-4'>About Sara</p>
+        <h2 class='text-3xl md:text-4xl font-bold tracking-tight text-gray-900'>A boutique studio built on breath, precision, and care.</h2>
+        <p class='text-lg text-gray-600 leading-relaxed mt-6'>Sara's Pilates Studio is a quiet retreat in central London — a space where you're seen, supported, and guided by a teacher who genuinely cares about how you move and how you feel.</p>
+        <p class='text-lg text-gray-600 leading-relaxed mt-4'>With over a decade of classical training and a passion for body-conditioning, Sara designs every session to meet you exactly where you are. No intimidation. No noise. Just strong, mindful movement.</p>
+        <div class='grid grid-cols-3 gap-6 mt-10'>
+          <div class='text-center'>
+            <span class='counter text-4xl font-black text-primary' data-target='12'></span>
+            <p class='text-sm text-gray-500 mt-1'>Years Teaching</p>
+          </div>
+          <div class='text-center'>
+            <span class='counter text-4xl font-black text-primary' data-target='500'></span>
+            <p class='text-sm text-gray-500 mt-1'>Active Clients</p>
+          </div>
+          <div class='text-center'>
+            <span class='counter text-4xl font-black text-primary' data-target='15000'></span>
+            <p class='text-sm text-gray-500 mt-1'>Sessions Led</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class='py-24 lg:py-32 relative' style='background-image:url(https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=1600&q=80);background-size:cover;background-position:center;background-attachment:fixed'>
+  <div class='absolute inset-0 bg-white/70'></div>
+  <div class='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <div class='text-center max-w-3xl mx-auto mb-16 fade-up'>
+      <p class='text-sm font-medium tracking-widest uppercase text-accent-dark mb-4'>Kind Words</p>
+      <h2 class='text-3xl md:text-4xl font-bold tracking-tight text-gray-900'>Stories from our community.</h2>
+    </div>
+    <div class='grid md:grid-cols-3 gap-6'>
+      <div class='backdrop-blur-sm bg-white/60 border border-white/40 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 fade-up'>
+        <div class='text-accent text-lg mb-3'>★★★★★</div>
+        <p class='italic text-gray-800 leading-relaxed'>"Sara's cues are unlike any teacher I've had. My back pain is gone and I stand taller. The studio feels like a sanctuary."</p>
+        <p class='font-semibold text-gray-900 mt-4'>Olivia R.</p>
+        <p class='text-sm text-gray-500'>Member, 2 years</p>
+      </div>
+      <div class='backdrop-blur-sm bg-white/60 border border-white/40 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 fade-up'>
+        <div class='text-accent text-lg mb-3'>★★★★★</div>
+        <p class='italic text-gray-800 leading-relaxed'>"I was nervous walking into my first class — I left feeling strong and calm. Sara makes Pilates feel accessible and deeply personal."</p>
+        <p class='font-semibold text-gray-900 mt-4'>Amelia T.</p>
+        <p class='text-sm text-gray-500'>New client</p>
+      </div>
+      <div class='backdrop-blur-sm bg-white/60 border border-white/40 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 fade-up'>
+        <div class='text-accent text-lg mb-3'>★★★★★</div>
+        <p class='italic text-gray-800 leading-relaxed'>"The small-group reformer classes are the highlight of my week. Precise, challenging, and incredibly well-taught."</p>
+        <p class='font-semibold text-gray-900 mt-4'>Charlotte M.</p>
+        <p class='text-sm text-gray-500'>Reformer member</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class='py-24 lg:py-32 bg-white'>
+  <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <div class='text-center max-w-3xl mx-auto mb-16 fade-up'>
+      <p class='text-sm font-medium tracking-widest uppercase text-accent-dark mb-4'>Why Pilates, Why Here</p>
+      <h2 class='text-3xl md:text-4xl font-bold tracking-tight text-gray-900'>From tension to transformation.</h2>
+      <p class='text-lg text-gray-600 leading-relaxed mt-6'>Modern life leaves its marks on the body. Here's how we help you undo them — gently, and for good.</p>
+    </div>
+    <div class='grid lg:grid-cols-2 gap-8'>
+      <div class='rounded-2xl p-8 border border-gray-100 bg-bg-light fade-up'>
+        <p class='text-sm font-medium tracking-widest uppercase text-gray-500 mb-4'>The Struggle</p>
+        <h3 class='text-xl font-semibold text-gray-900 mb-6'>Chronic back pain, poor posture, and gym intimidation.</h3>
+        <ul class='space-y-4'>
+          <li class='flex gap-3 text-lg text-gray-600 leading-relaxed'><i class='fa-solid fa-circle-dot text-gray-400 mt-2 text-xs'></i>Desk work leaves shoulders rounded and hips locked.</li>
+          <li class='flex gap-3 text-lg text-gray-600 leading-relaxed'><i class='fa-solid fa-circle-dot text-gray-400 mt-2 text-xs'></i>Loud, crowded gyms feel rushed and impersonal.</li>
+          <li class='flex gap-3 text-lg text-gray-600 leading-relaxed'><i class='fa-solid fa-circle-dot text-gray-400 mt-2 text-xs'></i>High-impact workouts worsen joints and fatigue.</li>
+          <li class='flex gap-3 text-lg text-gray-600 leading-relaxed'><i class='fa-solid fa-circle-dot text-gray-400 mt-2 text-xs'></i>Stress builds in the body with nowhere to release.</li>
+        </ul>
+      </div>
+      <div class='rounded-2xl p-8 border border-accent/30 bg-accent/5 fade-up'>
+        <p class='text-sm font-medium tracking-widest uppercase text-accent-dark mb-4'>Our Approach</p>
+        <h3 class='text-xl font-semibold text-gray-900 mb-6'>A welcoming, results-driven alternative.</h3>
+        <ul class='space-y-4'>
+          <li class='flex gap-3 text-lg text-gray-600 leading-relaxed'><i class='fa-solid fa-check text-accent-dark mt-1.5'></i>Targeted movement that opens hips and frees shoulders.</li>
+          <li class='flex gap-3 text-lg text-gray-600 leading-relaxed'><i class='fa-solid fa-check text-accent-dark mt-1.5'></i>Small groups, personal attention, zero intimidation.</li>
+          <li class='flex gap-3 text-lg text-gray-600 leading-relaxed'><i class='fa-solid fa-check text-accent-dark mt-1.5'></i>Low-impact, joint-friendly, deeply strengthening.</li>
+          <li class='flex gap-3 text-lg text-gray-600 leading-relaxed'><i class='fa-solid fa-check text-accent-dark mt-1.5'></i>Breath-led practice that clears the mind as it tones the body.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class='py-24 lg:py-32 bg-bg-light'>
+  <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <div class='text-center max-w-3xl mx-auto mb-16 fade-up'>
+      <p class='text-sm font-medium tracking-widest uppercase text-accent-dark mb-4'>Exhale. Begin.</p>
+      <h2 class='text-3xl md:text-4xl font-bold tracking-tight text-gray-900'>Breathing Pacer</h2>
+      <p class='text-lg text-gray-600 leading-relaxed mt-6'>Before you book — take a moment. Follow the circle. Inhale as it expands, exhale as it softens.</p>
+    </div>
+    <div id='wildcard-root' class='flex flex-col items-center justify-center py-12'>
+      <div class='relative w-64 h-64 flex items-center justify-center'>
+        <div id='breathing-circle' class='w-40 h-40 rounded-full bg-primary/20 border border-primary flex items-center justify-center transition-all ease-in-out' style='transition-duration:4000ms'>
+          <span id='breathing-text' class='text-sm font-medium tracking-widest uppercase text-primary'>Inhale</span>
+        </div>
+      </div>
+      <p class='text-sm font-medium tracking-widest uppercase text-gray-500 mt-8'>Four seconds in · Four seconds out</p>
+    </div>
+  </div>
+</section>
+
+<section id='iletisim' class='py-24 lg:py-32 bg-white'>
+  <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <div class='text-center max-w-3xl mx-auto mb-16 fade-up'>
+      <p class='text-sm font-medium tracking-widest uppercase text-accent-dark mb-4'>Visit the Studio</p>
+      <h2 class='text-3xl md:text-4xl font-bold tracking-tight text-gray-900'>Let's begin, together.</h2>
+      <p class='text-lg text-gray-600 leading-relaxed mt-6'>Reach out to book your first class or ask anything. We reply within one working day.</p>
+    </div>
+    <div class='grid lg:grid-cols-2 gap-12'>
+      <div class='space-y-6 fade-up'>
+        <div class='flex items-center gap-3'>
+          <i class='fa-solid fa-location-dot text-primary text-xl w-8'></i>
+          <span class='text-lg text-gray-800'>Central London, United Kingdom</span>
+        </div>
+        <div class='flex items-center gap-3'>
+          <i class='fa-solid fa-phone text-primary text-xl w-8'></i>
+          <a href='tel:+447700900123' class='text-lg text-gray-800 hover:text-primary'>+44 7700 900123</a>
+        </div>
+        <div class='flex items-center gap-3'>
+          <i class='fa-solid fa-envelope text-primary text-xl w-8'></i>
+          <a href='mailto:sara.johnson826@testmail.com' class='text-lg text-gray-800 hover:text-primary'>sara.johnson826@testmail.com</a>
+        </div>
+        <div class='flex items-center gap-3'>
+          <i class='fa-solid fa-clock text-primary text-xl w-8'></i>
+          <span class='text-lg text-gray-800'>Mon–Fri 7:00–20:00 · Sat 8:00–14:00</span>
+        </div>
+        <div class='flex items-center gap-3'>
+          <i class='fa-brands fa-instagram text-primary text-xl w-8'></i>
+          <a href='https://instagram.com/saraspilates' class='text-lg text-gray-800 hover:text-primary'>@saraspilates</a>
+        </div>
+        <iframe class='w-full h-64 rounded-2xl shadow-2xl border-0 mt-6' src='https://www.google.com/maps?q=central+london&output=embed' loading='lazy'></iframe>
+      </div>
+      <form id='contact-form' class='bg-gray-50 rounded-2xl p-8 fade-up'>
+        <div class='space-y-5'>
+          <div>
+            <label class='text-sm font-medium tracking-widest uppercase text-gray-600'>Name</label>
+            <input type='text' name='name' required class='mt-2 w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none'/>
+          </div>
+          <div>
+            <label class='text-sm font-medium tracking-widest uppercase text-gray-600'>Email</label>
+            <input type='email' name='email' required class='mt-2 w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none'/>
+          </div>
+          <div>
+            <label class='text-sm font-medium tracking-widest uppercase text-gray-600'>Phone</label>
+            <input type='tel' name='phone' class='mt-2 w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none'/>
+          </div>
+          <div>
+            <label class='text-sm font-medium tracking-widest uppercase text-gray-600'>Message</label>
+            <textarea name='message' rows='4' class='mt-2 w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none' placeholder='Tell us a little about your goals...'></textarea>
+          </div>
+          <button type='submit' class='w-full bg-primary text-white py-4 rounded-xl font-bold hover:opacity-90 transition-all'>Book Your First Class</button>
+          <p class='text-sm text-gray-500 text-center'>Exhale. Begin.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class='bg-gray-900 text-gray-400 py-16'>
+  <div class='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <div class='grid md:grid-cols-3 gap-12'>
+      <div>
+        <div class='flex items-center gap-3 mb-4'>
+          <svg class='h-14 w-auto' style='filter:brightness(0) invert(1)' aria-hidden='true'><use href='#logo-symbol'/></svg>
+          <span class='font-display text-xl tracking-wide text-white'>Sara's Pilates Studio</span>
+        </div>
+        <p class='text-gray-400 leading-relaxed'>Strength. Balance. Breath. A boutique Pilates studio in central London.</p>
+      </div>
+      <div>
+        <p class='text-sm font-medium tracking-widest uppercase text-white mb-4'>Navigate</p>
+        <ul class='space-y-2'>
+          <li><a href='#hero' class='hover:text-white transition-colors'>Home</a></li>
+          <li><a href='#hizmetler' class='hover:text-white transition-colors'>Services</a></li>
+          <li><a href='#hakkimizda' class='hover:text-white transition-colors'>About</a></li>
+          <li><a href='#iletisim' class='hover:text-white transition-colors'>Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class='text-sm font-medium tracking-widest uppercase text-white mb-4'>Follow</p>
+        <div class='flex gap-4'>
+          <a href='https://instagram.com/saraspilates' aria-label='Instagram' class='w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center hover:bg-primary hover:border-primary transition-all'><i class='fa-brands fa-instagram'></i></a>
+        </div>
+        <p class='mt-6 text-sm'>© <span id='yr'></span> Sara's Pilates Studio. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div style='width:100%;background:#07070f;border-top:1px solid rgba(0,240,255,.25);padding:.4rem 1.2rem;display:flex;align-items:center;justify-content:center;gap:8px;font-family:system-ui,-apple-system,sans-serif'><svg width='14' height='14' viewBox='0 0 34 34' fill='none'><rect x='2' y='2' width='14' height='9' rx='2.2' fill='#00F0FF' opacity='.92'/><rect x='18' y='2' width='14' height='9' rx='2.2' fill='#8B5CF6' opacity='.92'/><rect x='8' y='13' width='18' height='9' rx='2.2' fill='#00F0FF' opacity='.76'/><rect x='2' y='24' width='14' height='8' rx='2.2' fill='#EA580C' opacity='.88'/><rect x='18' y='24' width='14' height='8' rx='2.2' fill='#00F0FF' opacity='.66'/></svg><a href='https://lapsbrick.com' target='_blank' style='color:#ffffff;text-decoration:none;font-size:.72rem;font-weight:600;letter-spacing:.04em'>Powered by Laps Brick Solutions</a></div>
+
+</body>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Smooth scroll
+  document.querySelectorAll("a[href^='#']").forEach(link => {
+    link.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href.length > 1) {
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const mm = document.getElementById('mobile-menu');
+          if (mm && !mm.classList.contains('hidden')) mm.classList.add('hidden');
+        }
+      }
+    });
+  });
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  }
+
+  // IntersectionObserver for .fade-up
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Hero Carousel
+  const heroSlidesWrap = document.getElementById('hero-slides');
+  if (heroSlidesWrap) {
+    const slides = heroSlidesWrap.querySelectorAll('.hero-slide');
+    const totalSlides = slides.length;
+    let currentSlide = 0;
+    let autoplayInterval = null;
+    const dotsContainer = document.getElementById('hero-dots');
+    const prevBtn = document.getElementById('hero-prev');
+    const nextBtn = document.getElementById('hero-next');
+
+    function goToSlide(n) {
+      currentSlide = (n + totalSlides) % totalSlides;
+      heroSlidesWrap.style.transform = `translateX(-${currentSlide * 100}%)`;
+      updateDots();
+    }
+
+    function updateDots() {
+      if (!dotsContainer) return;
+      dotsContainer.querySelectorAll('button').forEach((btn, i) => {
+        if (i === currentSlide) {
+          btn.classList.add('active', 'opacity-100');
+          btn.classList.remove('opacity-50');
+        } else {
+          btn.classList.remove('active', 'opacity-100');
+          btn.classList.add('opacity-50');
+        }
+      });
+    }
+
+    if (dotsContainer) {
+      for (let i = 0; i < totalSlides; i++) {
+        const btn = document.createElement('button');
+        btn.className = 'w-3 h-3 rounded-full bg-white opacity-50 transition';
+        btn.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(btn);
+      }
+      updateDots();
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+
+    function startAutoplay() {
+      autoplayInterval = setInterval(() => goToSlide(currentSlide + 1), 5000);
+    }
+    function stopAutoplay() {
+      if (autoplayInterval) { clearInterval(autoplayInterval); autoplayInterval = null; }
+    }
+    startAutoplay();
+
+    const heroContainer = heroSlidesWrap.parentElement;
+    if (heroContainer) {
+      heroContainer.addEventListener('mouseenter', stopAutoplay);
+      heroContainer.addEventListener('mouseleave', startAutoplay);
+
+      let touchStartX = 0, touchEndX = 0;
+      heroContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        stopAutoplay();
+      }, { passive: true });
+      heroContainer.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) goToSlide(currentSlide + 1);
+          else goToSlide(currentSlide - 1);
+        }
+        startAutoplay();
+      }, { passive: true });
+    }
+  }
+
+  // Year
+  const yr = document.getElementById('yr');
+  if (yr) yr.textContent = new Date().getFullYear();
+
+  // Contact form
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      let msg = contactForm.querySelector('.form-success');
+      if (!msg) {
+        msg = document.createElement('div');
+        msg.className = 'form-success mt-4 p-4 bg-green-100 text-green-800 rounded-lg text-center font-medium';
+        contactForm.appendChild(msg);
+      }
+      msg.textContent = 'Mesajınız başarıyla gönderildi. Teşekkür ederiz!';
+      contactForm.reset();
+      setTimeout(() => { if (msg) msg.remove(); }, 5000);
+    });
+  }
+});
+</script></body></html>
